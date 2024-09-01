@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {%extends 'pizzas/base.html'%} {%block content%}
+    <p>Pizza: {{pizza.name}}</p>
+    <p>Toppings:</p>
+    <ul>
+      {%for topping in toppings%}
+      <li>
+        <p>{{topping.date_added|date:'M d, Y H:i'}}</p>
+        <p>{{topping.name}}</p>
+      </li>
+      {% empty %}
+      <li>There are no toppings mentioned currently</li>
+      {% endfor %}
+    </ul>
+    <button>
+      <a href="{%url 'pizzas:addTopping' pizza.id %}">Add Topping</a>
+    </button>
+    {%endblock content%}
+  </body>
+</html>

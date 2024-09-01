@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {%extends 'pizzas/base.html'%} {%block content%}
+    <ul>
+      {%for pizza in pizzas%}
+      <li>
+        <a href="{%url 'pizzas:pizzaName' pizza.id%}">{{pizza.name}}</a>
+      </li>
+      {%empty%}
+      <li>There are no records currently</li>
+      {%endfor%}
+      <button>
+        <a href="{%url 'pizzas:addPizza'%}">Add Pizza</a>
+      </button>
+
+    </ul>
+    {%endblock content%}
+  </body>
+</html>
